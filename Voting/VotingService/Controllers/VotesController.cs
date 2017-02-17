@@ -97,7 +97,9 @@
                 // This hardcoded path is only for the lab. Later in the lab when the version is changed, this
                 // hardcoded path must be changed to use the UX. In part 2 of the lab, this will be calculated
                 // using the connected service path.
-                string path = string.Format(@"..\VotingServicePkg.Code.1.0.2\{0}", file);
+                string path = Path.Combine(
+                    FabricRuntime.GetActivationContext().GetCodePackageObject("Code").Path,
+                    "index.html");
                 response = File.ReadAllText(path);
             }
 
