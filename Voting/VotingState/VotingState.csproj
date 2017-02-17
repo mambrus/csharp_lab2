@@ -125,8 +125,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IVotingService.cs" />
     <Compile Include="OwinCommunicationsListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VoteData.cs" />
     <Compile Include="VotingState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ServiceEventSource.cs" />
