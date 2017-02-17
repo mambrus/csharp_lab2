@@ -125,6 +125,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OwinCommunicationsListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VotingState.cs" />
     <Compile Include="Program.cs" />
