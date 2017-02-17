@@ -10,13 +10,6 @@
     using System.Net.Http.Headers;
     using System.Web.Http;
 
-    using Microsoft.AspNet.WebApi.Client;
-    using Microsoft.AspNet.WebApi.Core;
-    using Microsoft.AspNet.WebApi.Owin;
-    using Microsoft.AspNet.WebApi.OwinSelfHost;
-    using Microsoft.Owin;
-    using Microsoft.Owin.Host.HttpListener;
-    using Owin;
 
     public class VotesController : ApiController
     {
