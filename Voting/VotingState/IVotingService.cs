@@ -11,7 +11,9 @@ namespace VotingState
     public interface IVotingService
     {
         // Gets the list of VotingData structures.
-        Task<IReadOnlyList<VotingData>> GetVotingDataAsync(string id, CancellationToken token);
+        Task<IReadOnlyList<VotingData>> GetVotingDataAsync(
+            string id,
+            CancellationToken token);
 
         // Updates the count on a vote or adds a new vote if it doesn't already exist.
         Task AddVoteAsync(string key, int count, string id, CancellationToken token);

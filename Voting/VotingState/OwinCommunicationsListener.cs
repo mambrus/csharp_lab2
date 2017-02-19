@@ -118,9 +118,9 @@ namespace VotingState
             // injection of the stateless service into the controllers)
             config.Services.Replace(typeof(IHttpControllerActivator), this);
             config.Routes.MapHttpRoute(
-            name: "DefaultApi",
-            routeTemplate: "api/{controller}/{id}",
-            defaults: new { id = RouteParameter.Optional }
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
             );
             appBuilder.UseWebApi(config);
         }
@@ -133,8 +133,9 @@ namespace VotingState
         /// <returns>An instance of the selected HTTP controller</returns>
         /// <remarks>This is a cheap way to avoid a framework such as Unity.
         /// If already using Unity, that is a better approach.</remarks>
-        public IHttpController Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor,
-        Type controllerType)
+        public IHttpController Create(HttpRequestMessage request,
+            HttpControllerDescriptor controllerDescriptor,
+            Type controllerType)
         {
             // If the controller defines a constructor with a single parameter of
             // the type which implements the service type, create a new instance and
