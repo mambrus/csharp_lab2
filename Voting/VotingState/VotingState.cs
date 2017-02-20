@@ -13,11 +13,34 @@ namespace VotingState
     /// <summary>
     /// An instance of this class is created for each service replica by the Service Fabric runtime.
     /// </summary>
-    internal sealed class VotingState : StatefulService
+    internal sealed class VotingState : StatefulService, IVotingService
     {
         public VotingState(StatefulServiceContext context)
             : base(context)
         { }
+
+        public long RequestCount
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Task AddVoteAsync(string key, int count, string id, CancellationToken token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyList<VotingData>> GetVotingDataAsync(string id, CancellationToken token)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Optional override to create listeners (e.g., HTTP, Service Remoting, WCF, etc.) 
