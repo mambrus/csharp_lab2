@@ -4,6 +4,7 @@ using System.Fabric;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.ServiceFabric.Data;
 using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
@@ -18,6 +19,19 @@ namespace VotingState
         public VotingState(StatefulServiceContext context)
             : base(context)
         { }
+
+        public VotingState(StatefulServiceContext context, InitializationCallbackAdapter adapter)
+            : base(
+                context,
+                new ReliableStateManager(
+                    context,
+                    new ReliableStateManagerConfiguration(
+                        onInitializeStateSerializersEvent: adapter.OnInitialize)
+                )
+            )
+        {
+            adapter.StateManager = this.StateManager;
+        }
 
         public long RequestCount
         {
