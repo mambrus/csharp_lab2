@@ -29,7 +29,14 @@ namespace VotingState
         /// <returns>A collection of listeners.</returns>
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
         {
-            return new ServiceReplicaListener[0];
+            return new ServiceReplicaListener[]
+            {
+                new ServiceReplicaListener(serviceContext => new OwinCommunicationListener(
+                    serviceContext,
+                    this,
+                    ServiceEventSource.Current,
+                    "ServiceEndpoint"))
+            };
         }
 
         /// <summary>
