@@ -123,31 +123,57 @@ namespace VotingState
         }
 
         private const int ServiceTypeRegisteredEventId = 3;
-        [Event(ServiceTypeRegisteredEventId, Level = EventLevel.Informational, Message = "Service host process {0} registered service type {1}", Keywords = Keywords.ServiceInitialization)]
+        [
+            Event(
+                ServiceTypeRegisteredEventId,
+                Level = EventLevel.Informational,
+                Message = "Service host process {0} registered service type {1}",
+                Keywords = Keywords.ServiceInitialization)
+        ]
         public void ServiceTypeRegistered(int hostProcessId, string serviceType)
         {
             WriteEvent(ServiceTypeRegisteredEventId, hostProcessId, serviceType);
         }
 
         private const int ServiceHostInitializationFailedEventId = 4;
-        [Event(ServiceHostInitializationFailedEventId, Level = EventLevel.Error, Message = "Service host initialization failed", Keywords = Keywords.ServiceInitialization)]
+        [
+            Event(
+                ServiceHostInitializationFailedEventId,
+                Level = EventLevel.Error,
+                Message = "Service host initialization failed",
+                Keywords = Keywords.ServiceInitialization)
+        ]
         public void ServiceHostInitializationFailed(string exception)
         {
             WriteEvent(ServiceHostInitializationFailedEventId, exception);
         }
 
-        // A pair of events sharing the same name prefix with a "Start"/"Stop" suffix implicitly marks boundaries of an event tracing activity.
-        // These activities can be automatically picked up by debugging and profiling tools, which can compute their execution time, child activities,
+        // A pair of events sharing the same name prefix with a "Start"/"Stop" suffix implicitly marks
+        // boundaries of an event tracing activity.
+        // These activities can be automatically picked up by debugging and profiling tools, which can
+        // compute their execution time, child activities,
         // and other statistics.
         private const int ServiceRequestStartEventId = 5;
-        [Event(ServiceRequestStartEventId, Level = EventLevel.Informational, Message = "Service request '{0}' started", Keywords = Keywords.Requests)]
+        [
+            Event(
+                ServiceRequestStartEventId,
+                Level = EventLevel.Informational,
+                Message = "Service request '{0}' started",
+                Keywords = Keywords.Requests)
+        ]
         public void ServiceRequestStart(string requestTypeName)
         {
             WriteEvent(ServiceRequestStartEventId, requestTypeName);
         }
 
         private const int ServiceRequestStopEventId = 6;
-        [Event(ServiceRequestStopEventId, Level = EventLevel.Informational, Message = "Service request '{0}' finished", Keywords = Keywords.Requests)]
+        [
+            Event(
+                ServiceRequestStopEventId,
+                Level = EventLevel.Informational,
+                Message = "Service request '{0}' finished",
+                Keywords = Keywords.Requests)
+        ]
         public void ServiceRequestStop(string requestTypeName, string exception = "")
         {
             WriteEvent(ServiceRequestStopEventId, requestTypeName, exception);
