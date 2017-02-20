@@ -158,12 +158,12 @@ namespace VotingState
             Event(
                 ServiceRequestStartEventId,
                 Level = EventLevel.Informational,
-                Message = "Service request '{0}' started",
+                Message = "Service request '{0}' started. {1}",
                 Keywords = Keywords.Requests)
         ]
-        public void ServiceRequestStart(string requestTypeName)
+        public void ServiceRequestStart(string requestTypeName, string activity)
         {
-            WriteEvent(ServiceRequestStartEventId, requestTypeName);
+            WriteEvent(ServiceRequestStartEventId, requestTypeName, activity);
         }
 
         private const int ServiceRequestStopEventId = 6;
@@ -171,12 +171,12 @@ namespace VotingState
             Event(
                 ServiceRequestStopEventId,
                 Level = EventLevel.Informational,
-                Message = "Service request '{0}' finished",
+                Message = "Service request '{0}' finished. {1}",
                 Keywords = Keywords.Requests)
         ]
-        public void ServiceRequestStop(string requestTypeName, string exception = "")
+        public void ServiceRequestStop(string requestTypeName, string activity, string exception = "")
         {
-            WriteEvent(ServiceRequestStopEventId, requestTypeName, exception);
+            WriteEvent(ServiceRequestStopEventId, requestTypeName, activity, exception);
         }
         #endregion
 
