@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BondTypeAliasConverter.cs" />
+    <Compile Include="Controllers\StatefulVoteController.cs" />
     <Compile Include="InitializationCallbackAdapter.cs" />
     <Compile Include="IVotingService.cs" />
     <Compile Include="OwinCommunicationsListener.cs" />
