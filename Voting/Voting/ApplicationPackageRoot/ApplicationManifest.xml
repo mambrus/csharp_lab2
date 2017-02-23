@@ -2,12 +2,19 @@
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingType" ApplicationTypeVersion="1.0.3" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="VotingService_InstanceCount" DefaultValue="-1" />
+    <Parameter Name="VotingState_TargetReplicaSetSize" DefaultValue="1" />
+    <Parameter Name="VotingState_MinReplicaSetSize" DefaultValue="1" />
+    <Parameter Name="VotingState_PartitionCount" DefaultValue="1" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="VotingServicePkg" ServiceManifestVersion="1.0.3" />
+    <ConfigOverrides />
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="VotingStatePkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
   </ServiceManifestImport>
   <DefaultServices>
@@ -20,6 +27,11 @@
       <StatelessService ServiceTypeName="VotingServiceType" InstanceCount="[VotingService_InstanceCount]">
         <SingletonPartition />
       </StatelessService>
+    </Service>
+    <Service Name="VotingState">
+      <StatefulService ServiceTypeName="VotingStateType" TargetReplicaSetSize="[VotingState_TargetReplicaSetSize]" MinReplicaSetSize="[VotingState_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[VotingState_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
     </Service>
   </DefaultServices>
 </ApplicationManifest>
