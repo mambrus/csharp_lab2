@@ -2,5 +2,8 @@
 <Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/Voting" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="VotingService_InstanceCount" Value="1" />
+    <Parameter Name="VotingState_TargetReplicaSetSize" Value="3" />
+    <Parameter Name="VotingState_MinReplicaSetSize" Value="3" />
+    <Parameter Name="VotingState_PartitionCount" Value="3" />
   </Parameters>
 </Application>
